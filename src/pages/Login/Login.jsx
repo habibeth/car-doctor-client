@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg'
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
+import { useContext } from 'react';
+import { AuthContext } from '../../providers/AuthProvider';
 
 
 const Login = () => {
+
+    const {signInUser} = useContext(AuthContext)
+
     const handleLogin=(event)=>{
         event.preventDefault();
 
@@ -12,6 +17,11 @@ const Login = () => {
         const password = form.password.value;
 
         console.log(email, password)
+        signInUser(email, password)
+        .then(res=>{
+            console.log(res.user)
+        })
+        .catch(error=> console.log(error))
     }
     return (
         <div className="hero min-h-screen mb-32">
