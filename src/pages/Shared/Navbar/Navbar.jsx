@@ -4,19 +4,23 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
-    const {user,logOut} = useContext(AuthContext);
-    const handleLogOut=()=>{
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogOut = () => {
         logOut()
-        .then(()=>{})
-        .catch(error=> console.log(error))
+            .then(() => { })
+            .catch(error => console.log(error))
     }
     const menuItems = <>
-    <li><NavLink to="/">Home</NavLink></li>
-    <li><NavLink to="/about">About</NavLink></li>
-    {
-        user ? <button onClick={handleLogOut}>Sign Out</button> :
-        <li><NavLink to="/login">Login</NavLink></li>
-    }
+        <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/about">About</NavLink></li>
+        {
+            user ? <>
+                <li><NavLink to="/bookings">Bookings</NavLink></li>
+                <li><button onClick={handleLogOut}>Sign Out</button></li>
+            </>
+                :
+                <li><NavLink to="/login">Login</NavLink></li>
+        }
     </>
     return (
         <div className="navbar bg-base-100 h-28 mb-4">
@@ -43,7 +47,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-            <button className="btn btn-outline btn-error">Appointment</button>
+                <button className="btn btn-outline btn-error">Appointment</button>
             </div>
         </div>
     );

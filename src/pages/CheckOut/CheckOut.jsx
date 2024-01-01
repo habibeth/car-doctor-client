@@ -15,7 +15,7 @@ const CheckOut = () => {
         const form = event.target;
         const name = form.name.value;
         const date = form.date.value;
-        const email = form.name.value;
+        const email = form.email.value;
         const price = form.price.value;
         const message = form.message.value;
 
