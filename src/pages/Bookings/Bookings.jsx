@@ -13,7 +13,7 @@ const Bookings = () => {
         // fetch(url)
         //     .then(res => res.json())
         //     .then(data => setBookings(data))
-        axios.get(url, {withCredentials:true})
+        axios.get(url, {withCredentials: true})
         .then(data=> setBookings(data.data))
     }, [url])
 

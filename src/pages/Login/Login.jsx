@@ -3,7 +3,7 @@ import img from '../../assets/images/login/login.svg'
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
-import axios from 'axios';
+
 
 
 const Login = () => {
@@ -24,15 +24,17 @@ const Login = () => {
         signInUser(email, password)
         .then(res=>{
             console.log(res.user)
-            const user = {email}
-            // 
-            axios.post('http://localhost:5000/jwt', user, {withCredentials:true})
-            .then(data=> { 
-                console.log(data.data)
-                if(data.data.success){
-                    navigate(location?.state ? location?.state : '/')
-                }
-            })
+            navigate(location?.state ? location?.state : '/')
+            // const user = {email}
+
+            // // 
+            // axios.post('http://localhost:5000/jwt', user, {withCredentials:true})
+            // .then(data=> { 
+            //     console.log(data.data)
+            //     if(data.data.success){
+            //         navigate(location?.state ? location?.state : '/')
+            //     }
+            // })
         })
         .catch(error=> console.log(error))
     }
